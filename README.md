@@ -20,7 +20,6 @@
 - [Cost Analysis](#cost-analysis)
 - [Architecture Decisions](#architecture-decisions)
 - [Skills Demonstrated](#skills-demonstrated)
-- [Screenshots](#screenshots)
 - [Author](#author)
 
 ---
@@ -36,7 +35,7 @@ CloudMart is a production-ready e-commerce platform architecture deployed on Goo
 - **Chaos Engineering**: Validated resilience through controlled failure testing
 - **Cost-Optimized**: $149/month infrastructure with optimization recommendations
 - **Zero-Downtime Operations**: Rolling updates and automatic pod healing
-- **Complete Documentation**: Step-by-step deployment guide with 25 screenshot checkpoints
+- **Complete Documentation**: Step-by-step deployment guide with validation checkpoints
 
 **Business Use Case**: Modern e-commerce platform capable of handling 500+ concurrent users with auto-scaling capabilities for traffic spikes (Black Friday, flash sales).
 
@@ -45,7 +44,6 @@ CloudMart is a production-ready e-commerce platform architecture deployed on Goo
 ## Architecture
 
 ### High-Level Design
-
 ```
 ┌─────────────────────────────────────────────────────┐
 │         Internet Users (Global Traffic)             │
@@ -196,7 +194,7 @@ CloudMart is a production-ready e-commerce platform architecture deployed on Goo
 
 **Quick Start:**
 
-See [docs/DEPLOYMENT-COMMANDS.md](docs/DEPLOYMENT-COMMANDS.md) for complete step-by-step instructions with 25 screenshot checkpoints.
+See [docs/DEPLOYMENT-COMMANDS.md](docs/DEPLOYMENT-COMMANDS.md) for complete step-by-step instructions.
 
 **Deployment Time**: ~25-30 minutes  
 **Skill Level**: Intermediate to Advanced
@@ -367,30 +365,13 @@ See [docs/DEPLOYMENT-COMMANDS.md](docs/DEPLOYMENT-COMMANDS.md) for complete step
 
 ---
 
-## Screenshots
+## Documentation
 
-See [screenshots/](screenshots/) folder for visual documentation:
+Complete project documentation:
 
-1. Project setup and API enablement
-2. VPC network with subnets and secondary ranges
-3. Firewall rules configuration
-4. GKE cluster overview (3 nodes across 3 zones)
-5. Kubernetes nodes in Ready state
-6. Cloud SQL instance with private IP
-7. Databases created (products, orders, users)
-8. Memorystore Redis instance
-9. Cloud Storage buckets
-10. Kubernetes pods running
-11. LoadBalancer service with external IP
-12. Successful application test (curl)
-13. HPA configuration
-14. Pod auto-healing demonstration
-15. Failed deployment (ImagePullBackOff)
-16. Successful rollback
-17. Cluster monitoring dashboard
-18. Workloads view
-19. Services and Ingress
-20. Final infrastructure summary
+- **[Deployment Guide](docs/DEPLOYMENT-COMMANDS.md)** - Step-by-step deployment instructions with validation checkpoints
+- **[Architecture Summary](docs/ARCHITECTURE-SUMMARY.txt)** - Detailed infrastructure configuration
+- **[Deployment Scripts](scripts/)** - Automated deployment and cleanup scripts
 
 ---
 
@@ -429,7 +410,6 @@ See [screenshots/](screenshots/) folder for visual documentation:
 ---
 
 ## Repository Structure
-
 ```
 cloudmart-gcp/
 ├── README.md                           # This file
@@ -437,13 +417,10 @@ cloudmart-gcp/
 ├── .gitignore                          # Git ignore rules
 ├── docs/                               # Documentation
 │   ├── DEPLOYMENT-COMMANDS.md          # Step-by-step deployment guide
-│   ├── ARCHITECTURE-SUMMARY.txt        # Infrastructure summary
-│   └── CHAOS-TESTING.md                # Chaos engineering results
+│   └── ARCHITECTURE-SUMMARY.txt        # Infrastructure summary
 ├── scripts/                            # Deployment scripts
 │   ├── cloudmart-deploy.sh             # Full deployment automation
 │   └── cloudmart-cleanup.sh            # Resource cleanup
-├── screenshots/                        # Visual documentation
-│   └── [25 screenshots]                # Deployment checkpoints
 ├── kubernetes/                         # Kubernetes manifests (future)
 │   ├── deployments/
 │   ├── services/
@@ -465,20 +442,21 @@ cloudmart-gcp/
 **Deploy in 3 Steps:**
 
 1. **Clone the repository**
-   ```bash
+```bash
    git clone https://github.com/gbhorne/cloudmart-gcp.git
    cd cloudmart-gcp
-   ```
+```
 
 2. **Follow the deployment guide**
    - See [docs/DEPLOYMENT-COMMANDS.md](docs/DEPLOYMENT-COMMANDS.md)
-   - Take screenshots at each checkpoint
-   - Complete all 10 phases
+   - Complete all 10 deployment phases
+   - Validate with chaos engineering tests
 
-3. **Validate chaos engineering**
-   - Run pod deletion test
-   - Test bad deployment rollback
-   - Verify auto-scaling
+3. **Verify infrastructure**
+   - Check GKE cluster nodes
+   - Verify database connectivity
+   - Test load balancer
+   - Validate auto-scaling
 
 **Total Time**: 25-30 minutes  
 **Cost**: ~$149/month (or ~$100/month optimized)
