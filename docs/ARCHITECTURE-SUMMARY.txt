@@ -50,19 +50,19 @@ INFRASTRUCTURE COMPONENTS
 CHAOS TESTING RESULTS
 ========================================
 
-✓ Pod Deletion (Auto-Heal): PASSED
+- Pod Deletion (Auto-Heal): PASSED
   - Pod terminated in <1s
   - New pod created automatically
   - Recovery time: ~1 second
   - Zero downtime
 
-✓ Bad Deployment Rollback: PASSED
+- Bad Deployment Rollback: PASSED
   - Bad image deployed (ImagePullBackOff)
   - Old pods continued serving traffic
   - Rollback completed successfully
   - Zero downtime
 
-✓ Horizontal Pod Autoscaling: CONFIGURED
+- Horizontal Pod Autoscaling: CONFIGURED
   - Min replicas: 2
   - Max replicas: 5
   - CPU threshold: 50%
@@ -80,18 +80,18 @@ TOTAL:                        ~49/month
 
 SKILLS DEMONSTRATED
 ========================================
-✓ Google Kubernetes Engine (GKE)
-✓ Cloud SQL database management
-✓ Memorystore Redis caching
-✓ Cloud Storage configuration
-✓ VPC networking and subnets
-✓ Firewall rules and security
-✓ Load balancing and ingress
-✓ Kubernetes deployments and services
-✓ Horizontal Pod Autoscaling (HPA)
-✓ Chaos engineering testing
-✓ Zero-downtime rollbacks
-✓ Infrastructure as Code (gcloud CLI)
+- Google Kubernetes Engine (GKE)
+- Cloud SQL database management
+- Memorystore Redis caching
+- Cloud Storage configuration
+- VPC networking and subnets
+- Firewall rules and security
+- Load balancing and ingress
+- Kubernetes deployments and services
+- Horizontal Pod Autoscaling (HPA)
+- Chaos engineering testing
+- Zero-downtime rollbacks
+- Infrastructure as Code (gcloud CLI)
 
 NEXT STEPS
 ========================================
