@@ -1,0 +1,107 @@
+========================================
+ CLOUDMART E-COMMERCE PLATFORM
+ Architecture Summary
+========================================
+
+Project ID: playground-s-11-60fe91d0
+Region: us-central1
+Deployment Date: Tue Feb 10 06:05:02 PM UTC 2026
+
+INFRASTRUCTURE COMPONENTS
+========================================
+
+1. GKE CLUSTER
+   Name: cloudmart-cluster
+   Type: Regional (3 zones)
+   Nodes: 3 × e2-medium (2 vCPU, 4GB RAM each)
+   Total vCPUs: 6
+   Zones: us-central1-a, b, c
+   Network: cloudmart-vpc
+   Subnet: cloudmart-subnet (10.0.0.0/20)
+   Pods CIDR: 10.4.0.0/14
+   Services CIDR: 10.0.16.0/20
+
+2. CLOUD SQL (PostgreSQL 15)
+   Instance: cloudmart-db
+   Tier: db-f1-micro
+   Private IP: 10.177.0.3
+   Databases: products, orders, users
+   User: cloudmart
+   Password: CloudMart2024AppUser!
+
+3. MEMORYSTORE REDIS
+   Instance: cloudmart-cache
+   Version: Redis 7.0
+   Tier: Basic
+   Size: 1GB
+   Host: 10.163.79.243
+   Port: 6379
+
+4. CLOUD STORAGE BUCKETS
+   - gs://playground-s-11-60fe91d0-images/
+   - gs://playground-s-11-60fe91d0-static/
+   - gs://playground-s-11-60fe91d0-receipts/
+
+5. LOAD BALANCER
+   External IP: 35.184.40.233
+   Type: HTTP(S) Load Balancer
+   Backend: GKE Ingress
+
+CHAOS TESTING RESULTS
+========================================
+
+✓ Pod Deletion (Auto-Heal): PASSED
+  - Pod terminated in <1s
+  - New pod created automatically
+  - Recovery time: ~1 second
+  - Zero downtime
+
+✓ Bad Deployment Rollback: PASSED
+  - Bad image deployed (ImagePullBackOff)
+  - Old pods continued serving traffic
+  - Rollback completed successfully
+  - Zero downtime
+
+✓ Horizontal Pod Autoscaling: CONFIGURED
+  - Min replicas: 2
+  - Max replicas: 5
+  - CPU threshold: 50%
+
+COST ESTIMATE (Monthly)
+========================================
+GKE Cluster (3 nodes):        3
+Cloud SQL (db-f1-micro):      
+Memorystore (1GB):            8
+Cloud Storage (100GB):        
+Load Balancer:                8
+Monitoring/Logging:           0
+--------------------------------
+TOTAL:                        ~49/month
+
+SKILLS DEMONSTRATED
+========================================
+✓ Google Kubernetes Engine (GKE)
+✓ Cloud SQL database management
+✓ Memorystore Redis caching
+✓ Cloud Storage configuration
+✓ VPC networking and subnets
+✓ Firewall rules and security
+✓ Load balancing and ingress
+✓ Kubernetes deployments and services
+✓ Horizontal Pod Autoscaling (HPA)
+✓ Chaos engineering testing
+✓ Zero-downtime rollbacks
+✓ Infrastructure as Code (gcloud CLI)
+
+NEXT STEPS
+========================================
+1. Deploy microservices (Frontend, API, Product, Cart, Order)
+2. Implement application code
+3. Configure CI/CD pipeline
+4. Set up monitoring dashboards
+5. Perform load testing
+6. Document for GitHub repository
+
+========================================
+Generated: Tue Feb 10 06:05:02 PM UTC 2026
+========================================
