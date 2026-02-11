@@ -4,7 +4,7 @@
 
 
 
-This guide provides individual commands to deploy the CloudMart platform step-by-step, allowing you to take screenshots and understand each component.
+This guide provides individual commands to deploy the CloudMart platform step-by-step.
 
 
 
@@ -56,7 +56,7 @@ gcloud config set compute/zone us-central1-a
 
 
 
-\*\*Screenshot 1\*\*: Show configured project settings
+Show configured project settings
 
 
 
@@ -90,7 +90,7 @@ gcloud services enable \\
 
 
 
-\*\*Screenshot 2\*\*: Navigate to \*\*APIs \& Services\*\* → \*\*Enabled APIs\*\* and capture
+Navigate to \*\*APIs \& Services\*\* → \*\*Enabled APIs\*\* and capture
 
 
 
@@ -116,7 +116,7 @@ gcloud compute networks create cloudmart-vpc \\
 
 
 
-\*\*Screenshot 3\*\*: \*\*VPC Network\*\* → \*\*VPC networks\*\* → Show `cloudmart-vpc`
+\*\*VPC Network\*\* → \*\*VPC networks\*\* → Show `cloudmart-vpc`
 
 
 
