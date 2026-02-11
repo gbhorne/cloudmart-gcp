@@ -1,4 +1,4 @@
-\# 🔐 CloudMart Security Architecture
+\#  CloudMart Security Architecture
 
 
 
