@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-02-19T00:00:00.000Z" agent="Claude" version="24.0.0" type="device">
+  <diagram id="cloudmart-gcp-architecture" name="CloudMart Architecture">
+    <mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="CloudMart  GCP Production Architecture" style="text;html=1;fontSize=22;fontStyle=1;fontFamily=Helvetica;fontColor=#1a1a2e;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="350" y="20" width="500" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="Regional High-Availability E-Commerce Platform" style="text;html=1;fontSize=13;fontFamily=Helvetica;fontColor=#6b7280;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="350" y="52" width="500" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="internet" value="&lt;b&gt;Internet Users&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;color:#6b7280&quot;&gt;Global Traffic&lt;/font&gt;" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#9ca3af;strokeWidth=2;fontSize=13;fontFamily=Helvetica;fontColor=#1f2937;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="90" width="220" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6b7280;strokeWidth=2;endArrow=blockThin;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="internet" target="lb">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow1_label" value="HTTPS" style="edgeLabel;html=1;fontSize=10;fontFamily=Helvetica;fontColor=#6b7280;fontStyle=2;" vertex="1" connectable="0" parent="arrow1">
+          <mxGeometry x="-0.1" relative="1" as="geometry"><mxPoint x="15" y="0" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="lb" value="&lt;b&gt;HTTP(S) Load Balancer&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;color:#1e40af&quot;&gt;IP: 35.184.40.233&lt;br&gt;Global Edge Network&lt;br&gt;Health checks every 10s&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#3b82f6;strokeWidth=2;fontSize=13;fontFamily=Helvetica;fontColor=#1e3a5f;arcSize=12;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="410" y="220" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#3b82f6;strokeWidth=2;endArrow=blockThin;endFill=1;" edge="1" parent="1" source="lb" target="gke_container">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="vpc" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;strokeWidth=2;dashed=1;dashPattern=8 4;arcSize=8;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="110" y="330" width="980" height="670" as="geometry"/>
+        </mxCell>
+        <mxCell id="vpc_label" value="&lt;b&gt;VPC: cloudmart-vpc&lt;/b&gt;  |  Private Google Access Enabled" style="text;html=1;fontSize=12;fontFamily=Helvetica;fontColor=#15803d;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="130" y="335" width="380" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="net_info" value="&lt;div style=&quot;text-align:left;line-height:1.6&quot;&gt;&lt;b style=&quot;color:#15803d&quot;&gt;Network Configuration&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Nodes: 10.0.0.0/20 (4,096 IPs)&lt;br&gt;Pods: 10.4.0.0/14 (262,144 IPs)&lt;br&gt;Services: 10.0.16.0/20 (4,096 IPs)&lt;br&gt;Firewall: Least-privilege rules&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#86efac;strokeWidth=1;fontSize=11;fontFamily=Helvetica;fontColor=#374151;arcSize=14;align=center;verticalAlign=middle;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="790" y="345" width="280" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="gke_container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=2;arcSize=8;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="200" y="370" width="700" height="250" as="geometry"/>
+        </mxCell>
+        <mxCell id="gke_label" value="&lt;b&gt;GKE Cluster: cloudmart-cluster&lt;/b&gt;  |  Regional  |  us-central1" style="text;html=1;fontSize=12;fontFamily=Helvetica;fontColor=#1d4ed8;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="220" y="375" width="420" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="zone_a" value="&lt;b&gt;us-central1-a&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;color:#4b5563&quot;&gt;e2-medium&lt;br&gt;2 vCPU | 4GB RAM&lt;br&gt;Autoscale: 1-2 nodes&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#93c5fd;strokeWidth=1.5;fontSize=12;fontFamily=Helvetica;fontColor=#1e3a5f;arcSize=10;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="410" width="200" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="zone_b" value="&lt;b&gt;us-central1-b&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;color:#4b5563&quot;&gt;e2-medium&lt;br&gt;2 vCPU | 4GB RAM&lt;br&gt;Autoscale: 1-2 nodes&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#93c5fd;strokeWidth=1.5;fontSize=12;fontFamily=Helvetica;fontColor=#1e3a5f;arcSize=10;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="410" width="200" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="zone_c" value="&lt;b&gt;us-central1-c&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;color:#4b5563&quot;&gt;e2-medium&lt;br&gt;2 vCPU | 4GB RAM&lt;br&gt;Autoscale: 1-2 nodes&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#93c5fd;strokeWidth=1.5;fontSize=12;fontFamily=Helvetica;fontColor=#1e3a5f;arcSize=10;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="410" width="200" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="hpa_badge" value="&lt;b&gt;HPA&lt;/b&gt;: 25 replicas  |  CPU threshold: 50%  |  Scale-in cooldown: 5 min" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fefce8;strokeColor=#eab308;strokeWidth=1;fontSize=11;fontFamily=Helvetica;fontColor=#854d0e;arcSize=20;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="300" y="500" width="500" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="app_container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#a855f7;strokeWidth=2;arcSize=10;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="260" y="545" width="580" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="app_fe" value="&lt;b&gt;Frontend&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;React / Nginx&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ff;strokeColor=#c084fc;strokeWidth=1;fontSize=12;fontFamily=Helvetica;fontColor=#581c87;arcSize=14;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="275" y="552" width="160" height="46" as="geometry"/>
+        </mxCell>
+        <mxCell id="app_api" value="&lt;b&gt;API Gateway&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Auth &amp; Rate Limiting&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ff;strokeColor=#c084fc;strokeWidth=1;fontSize=12;fontFamily=Helvetica;fontColor=#581c87;arcSize=14;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="470" y="552" width="160" height="46" as="geometry"/>
+        </mxCell>
+        <mxCell id="app_ms" value="&lt;b&gt;Microservices&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Backend Services&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ff;strokeColor=#c084fc;strokeWidth=1;fontSize=12;fontFamily=Helvetica;fontColor=#581c87;arcSize=14;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="552" width="160" height="46" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow_gke_app" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#a855f7;strokeWidth=1.5;endArrow=blockThin;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="hpa_badge" target="app_container">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow_sql" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=2;endArrow=blockThin;endFill=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="app_container" target="cloudsql">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow_sql_label" value="Private IP" style="edgeLabel;html=1;fontSize=10;fontFamily=Helvetica;fontColor=#2563eb;fontStyle=2;" vertex="1" connectable="0" parent="arrow_sql">
+          <mxGeometry x="0.1" relative="1" as="geometry"><mxPoint x="-30" y="0" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="arrow_redis" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#dc2626;strokeWidth=2;endArrow=blockThin;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="app_container" target="redis">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow_redis_label" value="Private IP" style="edgeLabel;html=1;fontSize=10;fontFamily=Helvetica;fontColor=#dc2626;fontStyle=2;" vertex="1" connectable="0" parent="arrow_redis">
+          <mxGeometry x="0.1" relative="1" as="geometry"><mxPoint x="15" y="0" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="arrow_storage" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ea580c;strokeWidth=2;endArrow=blockThin;endFill=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="app_container" target="storage">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="cloudsql" value="&lt;b style=&quot;font-size:14px&quot;&gt;Cloud SQL&lt;/b&gt;&lt;br&gt;&lt;b&gt;PostgreSQL 15&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;color:#1e40af&quot;&gt;db-f1-micro (0.6GB RAM)&lt;br&gt;IP: 10.177.0.3 (Private)&lt;br&gt;DBs: products, orders, users&lt;br&gt;Backups: Daily @ 3am&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#dbeafe;strokeColor=#2563eb;strokeWidth=2;fontSize=12;fontFamily=Helvetica;fontColor=#1e3a5f;arcSize=8;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="680" width="210" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="redis" value="&lt;b style=&quot;font-size:14px&quot;&gt;Memorystore&lt;/b&gt;&lt;br&gt;&lt;b&gt;Redis 7.0&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;color:#991b1b&quot;&gt;1GB Basic Tier&lt;br&gt;IP: 10.163.79.243:6379&lt;br&gt;Sessions, Cart, Cache&lt;br&gt;API Rate Limiting&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#fee2e2;strokeColor=#dc2626;strokeWidth=2;fontSize=12;fontFamily=Helvetica;fontColor=#7f1d1d;arcSize=8;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="680" width="210" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="storage" value="&lt;b style=&quot;font-size:14px&quot;&gt;Cloud Storage&lt;/b&gt;&lt;br&gt;&lt;b&gt;Buckets&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;color:#9a3412&quot;&gt;Images (Public)&lt;br&gt;Static Assets (Public)&lt;br&gt;Receipts (Private)&lt;br&gt;Signed URLs for access&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#ffedd5;strokeColor=#ea580c;strokeWidth=2;fontSize=12;fontFamily=Helvetica;fontColor=#7c2d12;arcSize=8;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="730" y="680" width="210" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="security_sql" value=" Private IP Only" style="text;html=1;fontSize=10;fontFamily=Helvetica;fontColor=#16a34a;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="205" y="825" width="140" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="security_redis" value=" VPC-Native" style="text;html=1;fontSize=10;fontFamily=Helvetica;fontColor=#16a34a;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="495" y="825" width="120" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="security_storage" value=" Signed URLs" style="text;html=1;fontSize=10;fontFamily=Helvetica;fontColor=#16a34a;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="775" y="825" width="120" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="obs_box" value="&lt;div style=&quot;text-align:left;line-height:1.5&quot;&gt;&lt;b style=&quot;color:#0369a1&quot;&gt;Observability&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt; Cloud Monitoring&lt;br&gt; Cloud Logging&lt;br&gt; K8s Events&lt;br&gt; Custom Dashboards&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=1.5;fontSize=11;fontFamily=Helvetica;fontColor=#1e3a5f;arcSize=14;align=center;verticalAlign=middle;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="855" width="170" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="cost_box" value="&lt;div style=&quot;text-align:left;line-height:1.5&quot;&gt;&lt;b style=&quot;color:#065f46&quot;&gt;Monthly Cost: $149&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;GKE: $73 | SQL: $8 | Redis: $38&lt;br&gt;Storage: $2 | LB: $18 | Logs: $10&lt;br&gt;&lt;i&gt;Optimized: ~$100120/mo&lt;/i&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=1.5;fontSize=11;fontFamily=Helvetica;fontColor=#1e3a5f;arcSize=14;align=center;verticalAlign=middle;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="855" width="240" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="chaos_box" value="&lt;div style=&quot;text-align:left;line-height:1.5&quot;&gt;&lt;b style=&quot;color:#9333ea&quot;&gt;Chaos Engineering &lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt; Pod Auto-Healing (~1s)&lt;br&gt; Bad Deploy Rollback (&amp;lt;30s)&lt;br&gt; HPA Scaling (25 pods)&lt;br&gt;&lt;i&gt;Zero downtime maintained&lt;/i&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#a855f7;strokeWidth=1.5;fontSize=11;fontFamily=Helvetica;fontColor=#1e3a5f;arcSize=14;align=center;verticalAlign=middle;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="855" width="220" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="sla_box" value="&lt;div style=&quot;text-align:center;line-height:1.5&quot;&gt;&lt;b style=&quot;color:#b45309;font-size:13px&quot;&gt;99.95%&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;color:#92400e&quot;&gt;Uptime SLA&lt;br&gt;Multi-Zone HA&lt;br&gt;Auto-Healing&lt;br&gt;Zero-Downtime Deploys&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffbeb;strokeColor=#f59e0b;strokeWidth=1.5;fontSize=11;fontFamily=Helvetica;fontColor=#1e3a5f;arcSize=14;align=center;verticalAlign=middle;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="855" width="170" height="110" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -44,45 +44,15 @@ CloudMart is a production-ready e-commerce platform architecture deployed on Goo
 ## Architecture
 
 ### High-Level Design
-```
-┌─────────────────────────────────────────────────────┐
-│         Internet Users (Global Traffic)             │
-└──────────────────────┬──────────────────────────────┘
-                       │
-        ┌──────────────▼──────────────┐
-        │   HTTP(S) Load Balancer     │
-        │   IP: 35.184.40.233         │
-        │   Global Edge Network       │
-        └──────────────┬──────────────┘
-                       │
-        ┌──────────────▼──────────────┐
-        │   GKE Cluster (Regional)    │
-        │   3 Nodes across 3 Zones    │
-        │   us-central1-a,b,c         │
-        │   Auto-scaling: 2-5 pods    │
-        └──────────────┬──────────────┘
-                       │
-        ┌──────────────▼──────────────┐
-        │   Application Services      │
-        │   - Frontend (React/Nginx)  │
-        │   - API Gateway             │
-        │   - Microservices Backend   │
-        └──────────────┬──────────────┘
-                       │
-    ┌──────────────────┼──────────────────┐
-    │                  │                  │
-┌───▼────────┐   ┌────▼────────┐   ┌────▼─────────┐
-│ Cloud SQL  │   │ Memorystore │   │Cloud Storage │
-│PostgreSQL  │   │   Redis     │   │   Buckets    │
-│10.177.0.3  │   │10.163.79.243│   │  (Images)    │
-│(Private IP)│   │  Port: 6379 │   │  (Static)    │
-└────────────┘   └─────────────┘   └──────────────┘
-```
+
+![CloudMart GCP Architecture](diagrams/cloudmart-gcp-architecture.png)
+
+> **[View/Edit in draw.io](diagrams/cloudmart-gcp-architecture.drawio)** — Open in [app.diagrams.net](https://app.diagrams.net) to explore or modify the architecture diagram.
 
 ### Network Architecture
 
 - **VPC**: Custom network `cloudmart-vpc` with private Google access
-- **Subnets**: 
+- **Subnets**:
   - Primary: `10.0.0.0/20` (4,096 IPs for nodes)
   - Pods: `10.4.0.0/14` (262,144 IPs for Kubernetes pods)
   - Services: `10.0.16.0/20` (4,096 IPs for Kubernetes services)
@@ -425,8 +395,9 @@ cloudmart-gcp/
 │   ├── deployments/
 │   ├── services/
 │   └── hpa/
-└── diagrams/                           # Architecture diagrams (future)
-    └── architecture.png
+└── diagrams/                           # Architecture diagrams
+    ├── cloudmart-gcp-architecture.drawio  # Editable draw.io source
+    └── cloudmart-gcp-architecture.png     # Rendered diagram
 ```
 
 ---
